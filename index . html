@@ -4,82 +4,160 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NOIR CAIRO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --instagram: "Noir_Cairo2026";
-      --gold:      #D4AF37;
-      --black:     #000000;
-      --white:     #FFFFFF;
-      --dgrey:     #1A1A1A;
-      --mgrey:     #2a2a2a;
-      --lgrey:     #888;
-      --serif:     'Cormorant Garamond', Georgia, serif;
-      --sans:      'Montserrat', sans-serif;
+      --gold:#D4AF37;
+      --black:#000;
+      --white:#fff;
+      --lgrey:#888;
+      --serif:'Cormorant Garamond', serif;
+      --sans:'Montserrat', sans-serif;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {margin:0;padding:0;box-sizing:border-box;}
+
     body {
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--sans);
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      overflow-x: hidden;
-      cursor: none;
+      background:var(--black);
+      color:var(--white);
+      font-family:var(--sans);
+      cursor:none;
+      overflow-x:hidden;
     }
 
+    /* CURSOR */
     #cursor {
-      width: 12px; height: 12px;
-      border: 1px solid var(--gold);
-      border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
-      transition: width .25s, height .25s, background .25s, opacity .3s;
+      width:12px;height:12px;
+      border:1px solid var(--gold);
+      border-radius:50%;
+      position:fixed;
+      top:0;left:0;
+      transform:translate(-50%,-50%);
+      pointer-events:none;
+      z-index:9999;
+      transition:.2s;
     }
-    #cursor.big { width: 40px; height: 40px; background: rgba(212,175,55,.12); }
 
-    #loader {
-      position: fixed; inset: 0;
-      background: var(--black);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 8888;
-      transition: opacity .7s ease, visibility .7s;
+    #cursor.big {
+      width:40px;height:40px;
+      background:rgba(212,175,55,.15);
     }
-    #loader.gone { opacity: 0; visibility: hidden; }
-    .loader-text {
-      font-family: var(--serif);
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 300;
-      letter-spacing: 0.35em;
-      color: var(--gold);
-      animation: pulse 1.5s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
 
+    /* NAV */
     nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.5rem 4rem;
-      border-bottom: 1px solid rgba(212,175,55,.15);
-      background: rgba(0,0,0,.85);
-      backdrop-filter: blur(12px);
-      transition: padding .4s;
+      position:fixed;
+      top:0;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:1.2rem 3rem;
+      background:rgba(0,0,0,.85);
+      border-bottom:1px solid rgba(212,175,55,.15);
+      z-index:100;
     }
-    nav.scrolled { padding: 1rem 4rem; }
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 1.4rem; font-weight: 400;
-      letter-spacing: 0.4em; color: var(--gold); text-decoration: none;
+
+    .nav-links {
+      display:flex;
+      gap:2rem;
+      list-style:none;
     }
-    .nav-links { display: flex; gap: 3rem; list-style: none; }
+
     .nav-links a {
-      font-size: .65rem; font-weight: 500;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--lgrey); text-decoration: none;
-      position: relative; transition: color .3s;
+      color:var(--lgrey);
+      text-decoration:none;
+      font-size:.7rem;
     }
-    .nav-links a::after {
-      content:''; position: absolute; bottom: -3px; left: 0; right: 0;
+
+    .nav-links a:hover {
+      color:var(--gold);
+    }
+
+    .nav-right {
+      display:flex;
+      gap:1.5rem;
+      align-items:center;
+    }
+
+    .nav-btn {
+      font-size:.65rem;
+      text-decoration:none;
+      letter-spacing:.1em;
+      padding:.4rem .8rem;
+      border:1px solid var(--gold);
+      color:var(--gold);
+      transition:.3s;
+    }
+
+    .nav-btn:hover {
+      background:var(--gold);
+      color:#000;
+    }
+
+    /* HERO */
+    #hero {
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+    }
+
+    .hero-title {
+      font-family:var(--serif);
+      font-size:5rem;
+      color:var(--gold);
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#collection">Drop</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <!-- Instagram -->
+    <a class="nav-btn" href="https://instagram.com/Noir_Cairo2026" target="_blank">
+      Instagram
+    </a>
+
+    <!-- WhatsApp -->
+    <a class="nav-btn" href="https://wa.me/201127002206" target="_blank">
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <h1 class="hero-title">NOIR CAIRO</h1>
+</section>
+
+<script>
+  const cursor = document.getElementById("cursor");
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+
+  document.querySelectorAll("a").forEach(a => {
+    a.addEventListener("mouseenter", () => cursor.classList.add("big"));
+    a.addEventListener("mouseleave", () => cursor.classList.remove("big"));
+  });
+</script>
+
+</body>
+</html>
