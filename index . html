@@ -1,162 +1,105 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOIR CAIRO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOIR CAIRO</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<style>
+body{
+  margin:0;
+  background:#000;
+  color:#fff;
+  font-family:Arial;
+  cursor:none;
+}
 
-  <style>
-    :root {
-      --gold:#D4AF37;
-      --black:#000;
-      --white:#fff;
-      --lgrey:#888;
-      --serif:'Cormorant Garamond', serif;
-      --sans:'Montserrat', sans-serif;
-    }
+/* cursor */
+#cursor{
+  width:12px;
+  height:12px;
+  border:1px solid gold;
+  border-radius:50%;
+  position:fixed;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:9999;
+}
 
-    * {margin:0;padding:0;box-sizing:border-box;}
+/* nav */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  border-bottom:1px solid #222;
+}
 
-    body {
-      background:var(--black);
-      color:var(--white);
-      font-family:var(--sans);
-      cursor:none;
-      overflow-x:hidden;
-    }
+.nav-links{
+  display:flex;
+  gap:20px;
+  list-style:none;
+}
 
-    /* CURSOR */
-    #cursor {
-      width:12px;height:12px;
-      border:1px solid var(--gold);
-      border-radius:50%;
-      position:fixed;
-      top:0;left:0;
-      transform:translate(-50%,-50%);
-      pointer-events:none;
-      z-index:9999;
-      transition:.2s;
-    }
+.nav-links a{
+  color:#aaa;
+  text-decoration:none;
+}
 
-    #cursor.big {
-      width:40px;height:40px;
-      background:rgba(212,175,55,.15);
-    }
+.nav-links a:hover{
+  color:gold;
+}
 
-    /* NAV */
-    nav {
-      position:fixed;
-      top:0;
-      width:100%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:1.2rem 3rem;
-      background:rgba(0,0,0,.85);
-      border-bottom:1px solid rgba(212,175,55,.15);
-      z-index:100;
-    }
+.btn{
+  border:1px solid gold;
+  padding:6px 12px;
+  color:gold;
+  text-decoration:none;
+}
 
-    .nav-links {
-      display:flex;
-      gap:2rem;
-      list-style:none;
-    }
+.btn:hover{
+  background:gold;
+  color:#000;
+}
 
-    .nav-links a {
-      color:var(--lgrey);
-      text-decoration:none;
-      font-size:.7rem;
-    }
-
-    .nav-links a:hover {
-      color:var(--gold);
-    }
-
-    .nav-right {
-      display:flex;
-      gap:1.5rem;
-      align-items:center;
-    }
-
-    .nav-btn {
-      font-size:.65rem;
-      text-decoration:none;
-      letter-spacing:.1em;
-      padding:.4rem .8rem;
-      border:1px solid var(--gold);
-      color:var(--gold);
-      transition:.3s;
-    }
-
-    .nav-btn:hover {
-      background:var(--gold);
-      color:#000;
-    }
-
-    /* HERO */
-    #hero {
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      text-align:center;
-    }
-
-    .hero-title {
-      font-family:var(--serif);
-      font-size:5rem;
-      color:var(--gold);
-    }
-
-  </style>
+/* hero */
+.hero{
+  height:90vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:60px;
+  color:gold;
+}
+</style>
 </head>
 
 <body>
 
 <div id="cursor"></div>
 
-<!-- NAV -->
 <nav>
   <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#collection">Drop</a></li>
-    <li><a href="#order">Order</a></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Shop</a></li>
   </ul>
 
-  <div class="nav-right">
-    <!-- Instagram -->
-    <a class="nav-btn" href="https://instagram.com/Noir_Cairo2026" target="_blank">
-      Instagram
-    </a>
-
-    <!-- WhatsApp -->
-    <a class="nav-btn" href="https://wa.me/201127002206" target="_blank">
-      WhatsApp
-    </a>
+  <div>
+    <a class="btn" href="https://instagram.com/noir_cairo2026" target="_blank">Instagram</a>
+    <a class="btn" href="https://wa.me/201127002206" target="_blank">WhatsApp</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <h1 class="hero-title">NOIR CAIRO</h1>
-</section>
+<div class="hero">
+  NOIR CAIRO
+</div>
 
 <script>
-  const cursor = document.getElementById("cursor");
+const cursor = document.getElementById("cursor");
 
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-  });
-
-  document.querySelectorAll("a").forEach(a => {
-    a.addEventListener("mouseenter", () => cursor.classList.add("big"));
-    a.addEventListener("mouseleave", () => cursor.classList.remove("big"));
-  });
+document.addEventListener("mousemove",(e)=>{
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
 </script>
 
 </body>
